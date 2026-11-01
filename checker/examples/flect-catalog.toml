@@ -1,0 +1,19 @@
+# The built-in copy of the Flect catalog (getflect/flect-catalog, RFC-0021): the test
+# fixture and what the dashboard lists before the broker has indexed the repo.
+# Refreshed from the repo, never the other way round.
+
+[catalog]
+name        = "flect"
+description = "Apps that run on Flect: templates checked against RFC-0021."
+
+[[apps]]
+id     = "static"
+source = "./apps/static"
+
+[[apps]]
+id     = "papyra"
+source = "./apps/papyra"
+
+[[apps]]
+id     = "n8n"
+source = "./apps/n8n"

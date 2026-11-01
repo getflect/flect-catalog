@@ -1,0 +1,31 @@
+# Papyra, from its docker-compose.hub.yml (github.com/lyfie-org/papyra, v1.1.1).
+
+[app]
+name = "papyra"
+
+[catalog]
+title      = "Papyra"
+tagline    = "Self-hosted notes, in Markdown files you own."
+category   = "app"
+license    = "GPL-3.0"
+source     = "https://github.com/lyfie-org/papyra"
+maintainer = "lyfie-org"
+tags       = ["notes", "markdown"]
+
+[inputs.TZ]
+description = "Time zone for dates in notes"
+default     = "UTC"
+
+[services.web]
+image    = "lyfie/papyra:v1.1.1"
+port     = 8080
+public   = true
+memoryMb = 256
+health   = "/health"
+volumes  = ["/data"]    # notes, attachments, the SQLite cache and the search index
+
+[services.web.vars]
+TZ                            = "{inputs.TZ}"
+PUID                          = "1000"
+PGID                          = "1000"
+PAPYRA_ALLOW_INSECURE_COOKIES = "false"

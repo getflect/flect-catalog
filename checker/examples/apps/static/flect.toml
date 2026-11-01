@@ -1,0 +1,17 @@
+[app]
+name = "static"
+
+[catalog]
+title    = "Static site (nginx)"
+tagline  = "Serve a folder of files from a container."
+category = "starter"
+license  = "BSD-2-Clause"
+source   = "https://github.com/nginx/nginx"
+tags     = ["html"]
+
+[services.web]
+image    = "nginx:1.27-alpine"
+port     = 80
+public   = true
+memoryMb = 64
+health   = "/"          # nginx has no /healthz

@@ -1,5 +1,9 @@
 # Every entry of the catalog must pass RFC-0021's rules before it can merge:
 # the platform publishes whatever is on main at the next reindex.
+#
+# The rules come from main's checker/, never from the pull request's own copy,
+# so a pull request cannot loosen the check it is judged by. Changes to the
+# checker itself are tested by checker.yml; the new rules apply once merged.
 name: check
 
 on:
@@ -15,8 +19,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          path: catalog
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          path: rules
+          sparse-checkout: checker
+          persist-credentials: false
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+      - run: npm ci --no-audit --no-fund
+        working-directory: rules/checker
       - name: flect-catalog check
-        run: npx -y -p @getflect/catalog@0.1 flect-catalog check . --fetch
+        run: npm run check -- "$GITHUB_WORKSPACE/catalog" --fetch
+        working-directory: rules/checker
+

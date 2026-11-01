@@ -75,10 +75,12 @@ papyra, n8n.
   input they name exists.
 - The schema is closed: no host paths, no fixed ports, no field Flect does not
   define. A template can do nothing an app's own `flect.toml` cannot.
-- `volumes` is accepted but not persistent yet; the check warns.
+- `volumes` (`"/data"` or `{ path, size, owner }`, RFC-0022) are kept on the
+  node the app runs on and not backed up yet; the check warns.
 
-Run the same check locally:
+The rules live in [`checker/`](checker/); a pull request is checked with
+`main`'s copy of them. Run the same check locally:
 
 ```bash
-npx -y -p @getflect/catalog flect-catalog check . --fetch
+cd checker && npm ci && npm run check -- .. --fetch
 ```

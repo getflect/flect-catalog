@@ -1,6 +1,6 @@
 # The Flect catalog (RFC-0021). Each entry is a template: a flect.toml with a
 # [catalog] table and no scope or resource ids. Add one with a pull request;
-# CI checks every entry with `flect-catalog check --fetch`.
+# CI checks every entry with the rules in checker/.
 
 [catalog]
 name        = "flect"

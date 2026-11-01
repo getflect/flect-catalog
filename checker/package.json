@@ -1,0 +1,39 @@
+{
+  "name": "@getflect/catalog",
+  "version": "0.1.0",
+  "description": "Flect catalog templates (RFC-0021): parse and validate a template flect.toml and a flect-catalog.toml index. Ships TypeScript source: Flect pins it as a git dependency and bundles it; CI and `npm run check` run the checker with tsx.",
+  "type": "module",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts",
+    "./check": "./src/check.ts"
+  },
+  "files": [
+    "src"
+  ],
+  "scripts": {
+    "gen:builtin": "node scripts/gen-builtin.mjs",
+    "check": "tsx src/cli.ts check",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit"
+  },
+  "author": "Flect Team",
+  "license": "MIT",
+  "dependencies": {
+    "smol-toml": "^1.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.0",
+    "tsx": "^4.20.0",
+    "typescript": "^5.9.3",
+    "vitest": "^4.1.9"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/getflect/flect-catalog.git",
+    "directory": "checker"
+  },
+  "private": true
+}
