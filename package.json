@@ -1,0 +1,20 @@
+{
+  "name": "@getflect/catalog",
+  "version": "0.1.0",
+  "description": "How Flect installs this repo as a git dependency: the package is checker/ (see checker/README.md). pnpm 11 ignores a git dependency's &path:, so the root points at it.",
+  "private": true,
+  "type": "module",
+  "main": "./checker/src/index.ts",
+  "types": "./checker/src/index.ts",
+  "exports": {
+    ".": "./checker/src/index.ts",
+    "./check": "./checker/src/check.ts"
+  },
+  "files": [
+    "checker/src"
+  ],
+  "dependencies": {
+    "smol-toml": "^1.3.1"
+  },
+  "license": "MIT"
+}
