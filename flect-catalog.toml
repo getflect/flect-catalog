@@ -1,0 +1,19 @@
+# The Flect catalog (RFC-0021). Each entry is a template: a flect.toml with a
+# [catalog] table and no scope or resource ids. Add one with a pull request;
+# CI checks every entry with `flect-catalog check --fetch`.
+
+[catalog]
+name        = "flect"
+description = "Apps that run on Flect: templates checked against RFC-0021."
+
+[[apps]]
+id     = "static"
+source = "./apps/static"
+
+[[apps]]
+id     = "papyra"
+source = "./apps/papyra"
+
+[[apps]]
+id     = "n8n"
+source = "./apps/n8n"
